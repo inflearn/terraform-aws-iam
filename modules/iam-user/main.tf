@@ -38,3 +38,11 @@ resource "aws_iam_user_ssh_key" "this" {
   encoding   = var.ssh_key_encoding
   public_key = var.ssh_public_key
 }
+
+resource "aws_iam_user_policy" "this" {
+  count = var.create_user && var.policy != null ? 1 : 0
+
+  name   = var.name
+  user   = aws_iam_user.this[0].name
+  policy = var.policy
+}
