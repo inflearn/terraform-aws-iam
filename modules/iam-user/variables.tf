@@ -76,8 +76,9 @@ variable "permissions_boundary" {
 }
 
 variable "policy" {
-  type    = string
-  default = null
+  description = "The JSON policy that is used to set the permissions boundary for the user."
+  type        = string
+  default     = null
 }
 
 variable "tags" {
