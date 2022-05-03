@@ -57,7 +57,7 @@ resource "aws_iam_policy" "custom" {
 
   name        = var.custom_group_policies[count.index]["name"]
   policy      = var.custom_group_policies[count.index]["policy"]
-  description = lookup(var.custom_group_policies[count.index], "description", null)
+  description = try(var.custom_group_policies[count.index].description, null)
 
   tags = var.tags
 }
